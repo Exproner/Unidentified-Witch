@@ -6,10 +6,11 @@
 <title>Light Novel Website</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: Helvetica Neue 5;
         margin: 0;
         background-color: #ffffff;
     }
+
     /* Navbar */
     nav {
         background-color: #4c4f9d;
@@ -17,23 +18,19 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-         border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-
-        border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        flex-wrap: wrap;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     nav ul {
         list-style: none;
         display: flex;
         margin: 0;
         padding: 0;
+        flex-wrap: wrap;
     }
     nav ul li {
-        margin: 0 10px;
+        margin: 5px;
     }
     nav ul li a {
         color: white;
@@ -41,6 +38,7 @@
         padding: 6px 12px;
         border: 1px solid white;
         border-radius: 20px;
+        transition: 0.3s;
     }
     nav ul li a:hover {
         background-color: white;
@@ -51,57 +49,51 @@
     .light-novel {
         display: flex;
         align-items: flex-start;         
-        padding: 20px 40px;
+        padding: 20px;
         background-color: white;
         color: #333;
-        margin: 0;
+        position: relative;
+        z-index: 2; /* tetap di atas highlight-section */
+        flex-wrap: wrap;
     }
     .light-novel img {
-        width: 430px;
+        width: 100%;
+        max-width: 430px;
         border-radius: 10px;
         box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+        position: relative;
+        margin-bottom: -70px; 
+        z-index: 3; 
+        flex-shrink: 0;
     }
     .novel-info {
-        margin-left: 100px;
-        max-width: 600px;
+        flex: 1;
+        min-width: 280px;
+        margin-left: 40px;
     }
-    .novel-info h1 {
-        font-size: 100px;
-        font-weight: bold;
-        color: #4c4f9d;
-        white-space: nowrap;
-        text-shadow: 0px 20px 30px rgba(0,0,0,0.3);
-        margin: 0;
-    }
-   
-.novel-subtitle {
-    display: flex;
-    flex-wrap: wrap; /* kalau layarnya kecil, bisa turun ke bawah */
-    align-items: baseline; /* biar rata garis bawah teks */
-    gap: 8px; /* jarak antar teks */
-}
-
-.novel-subtitle .title-main {
-    font-size: 21.9px;
+   .novel-info h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem); /* sebelumnya 1.8rem, 4vw, 3rem */
     font-weight: bold;
     color: #4c4f9d;
     white-space: nowrap;
+    text-shadow: 0px 20px 30px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+.novel-subtitle .title-main {
+    font-size: clamp(1.2rem, 3vw, 1.6rem); /* sebelumnya 1rem, 2.5vw, 1.4rem */
+    font-weight: bold;
+    color: #4c4f9d;
     text-shadow: 0px 10px 20px rgba(0,0,0,0.3);
 }
 
 .novel-subtitle .title-sub {
-    font-size: 20px;
-    font-weight: bold; /* bisa beda style */
+    font-size: clamp(1.1rem, 2.8vw, 1.4rem); /* sebelumnya 0.9rem, 2.3vw, 1.2rem */
+    font-weight: bold;
     color: #4c4f9d;
     text-shadow: 0px 10px 20px rgba(0,0,0,0.3);
 }
 
-
-    .novel-info p {
-        margin: 10px 0;
-        line-height: 1.5;
-       
-    }
     .btn {
         display: inline-block;
         padding: 10px 15px;
@@ -110,6 +102,7 @@
         color: #4c4f9d;
         text-decoration: none;
         margin-top: 10px;
+        transition: 0.3s;
     }
     .btn:hover {
         background-color: #4c4f9d;
@@ -120,98 +113,84 @@
         font-weight: bold;
     }
 
-    /* Contact Section */
-    .contact-section {
-        background-color: white;
-        padding: 40px;
-        text-align: center;
+    /* Logo Text */
+    .logo-text {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        background: linear-gradient(270deg, white, gold);
+        background-size: 600% 600%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s ease infinite;
     }
-    .contact-box {
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* highlight-section */
+    .highlight-section {
         background-color: #4c4f9d;
-        color: white;
-        padding: 20px;
-        display: inline-block;
-        border-radius: 5px;
-        text-align: left;
-    }
-
-    /* Team Section */
-    .team-section {
-        background-color: #4c4f9d;
-        padding: 40px;
-        text-align: center;
-        color: white;
-
-         border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-
-        border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-    }
-    .team-cards {
+        height: 190px;
+        position: relative;
+        margin-top: -100px; /* efek overlap */
+        z-index: 1;
         display: flex;
         justify-content: center;
-        gap: 30px;
-        margin-top: 20px;
+        align-items: center;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        font-size: clamp(0.8rem, 2vw, 1rem);
     }
-  .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 150px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 12px rgba(0,0,0,0.4);
-}
-.avatar {
-    width: 80px;
-    height: 80px;
-    border: 2px solid #4c4f9d;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    object-fit: cover;
-}
-.username {
-    font-weight: bold;
-    font-size: 14px;
-    color: #333;
-}
-.logo-text {
-    font-size: 50px;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-    background: linear-gradient(270deg, white, gold);
-    background-size: 600% 600%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 3s ease infinite;
-}
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .light-novel {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .novel-info {
+            margin-left: 0;
+        }
+        .novel-subtitle {
+            justify-content: center;
+        }
+          .light-novel img {
+        margin-bottom: 20px; /* ganti -70px jadi jarak normal */
+        position: static;    /* biar nggak saling numpuk */
+    }
+    }
+    @media (max-width: 480px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        nav ul {
+            justify-content: center;
+        }
+        .novel-subtitle {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <nav>
-<div class="logo-text">Unidentified Witch</div>
+    <div class="logo-text">Unidentified Witch</div>
     <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Fanart</a></li>
         <li><a href="#">Store</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
     </ul>
 </nav>
 
@@ -221,58 +200,24 @@
     <div class="novel-info">
         <h1>LIGHT NOVEL</h1>
         <div class="novel-subtitle">
-         <h2 class="title-main">UNIDENTIFIED WITCH:</h2>
-         <h2 class="title-sub">Adopted girl who become archmage</h2>
-         </div>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            <h2 class="title-main">UNIDENTIFIED WITCH:</h2>
+            <h2 class="title-sub">Adopted girl who become archmage</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
            erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
            consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
-           <p>*Disclaimer, bahwa website ini masih
- tahap pengembangan mungkin suatu saat
- akan berubah</p>
+        <p>*Disclaimer, bahwa website ini masih tahap pengembangan mungkin suatu saat akan berubah</p>
         <a href="#" class="btn">Baca Sekarang</a>
         <p class="progress">Progress Story: Vol 1 chapter 1 (Coming soon)</p>
     </div>
 </section>
 
-<!-- Contact Section -->
-<section class="contact-section">
-    <h1 style="color: #4c4f9d;">OUR CONTACT</h1>
-    <div class="contact-box">
-        <p>Gmail: Blabla@gmail.com</p>
-        <p>WA: 01290128301490</p>
-    </div>
+<!-- highlight-section -->
+<section class="highlight-section">
+ 
 </section>
-
-<!-- Team Section -->
-<section class="team-section">
-    <h1>PROJECT TEAM</h1>
-    <div class="team-cards" id="team-container"></div>
-</section>
-
-<script>
-const teamData = [
-    { name: "Gilang Ilham", img: "gilang.jpg", link: "https://https://www.instagram.com/ilhammgk_/.com/user1" },
-    { name: "Apta Mahendra", img: "apta.jpg", link: "https://instagram.com/https://www.instagram.com/apta_walker345/" },
-    { name: "Rifki Firdaus", img: "rifki.jpg", link: "https://https://www.instagram.com/rifkitenkuuji/.com/user3" }
-];
-
-const container = document.getElementById('team-container');
-teamData.forEach(member => {
-    container.innerHTML += `
-        <a href="${member.link}" target="_blank" style="text-decoration:none; color:inherit;">
-            <div class="card">
-                <img class="avatar" src="${member.img}" alt="${member.name}">
-                <p class="username">${member.name}</p>
-            </div>
-        </a>
-    `;
-});
-</script>
-
-
 
 </body>
 </html>

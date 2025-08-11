@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+   body {
+        font-family: Helvetica Neue 5;
+        margin: 0;
+        background-color: #ffffff;
+    }
+   /* Navbar */
+    nav {
+        background-color: #4c4f9d;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 12px;
+        border: 1px solid white;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+    nav ul li a:hover {
+        background-color: white;
+        color: #4c4f9d;
+    }
+
+    @media (max-width: 480px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        nav ul {
+            justify-content: center;
+        }
+        .novel-subtitle {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        background-color: white;
+        padding: 40px 20px;
+        text-align: center;
+        
+    }
+    .contact-box {
+        background-color: #4c4f9d;
+        color: white;
+        padding: 20px;
+        display: inline-block;
+        border-radius: 5px;
+        text-align: center;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    /* Team Section */
+    .team-section {
+        background-color: #4c4f9d;
+        padding: 40px 20px;
+        text-align: center;
+        color: white;
+        border-radius: 50px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    .team-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 150px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 12px rgba(0,0,0,0.4);
+    }
+    .avatar {
+        width: 80px;
+        height: 80px;
+        border: 2px solid #4c4f9d;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        object-fit: cover;
+    }
+    .username {
+        font-weight: bold;
+        font-size: 14px;
+        color: #333;
+    }
+
+    /* Logo Text */
+    .logo-text {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+        background: linear-gradient(270deg, white, gold);
+        background-size: 600% 600%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s ease infinite;
+    }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo-text">Unidentified Witch</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Fanart</a></li>
+        <li><a href="#">Store</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <h1 style="color: #4c4f9d;">OUR CONTACT</h1>
+    <div class="contact-box">
+        <p>Gmail: Blabla@gmail.com</p>
+        <p>WA: 01290128301490</p>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+    <h1>PROJECT TEAM</h1>
+    <div class="team-cards" id="team-container"></div>
+</section>
+
+<script>
+const teamData = [
+    { name: "Gilang Ilham", img: "gilang.jpg", link: "https://www.instagram.com/ilhammgk_" },
+    { name: "Apta Mahendra", img: "apta.jpg", link: "https://www.instagram.com/apta_walker345/" },
+    { name: "Rifki Firdaus", img: "rifki.jpg", link: "https://www.instagram.com/rifkitenkuuji" }
+];
+
+const container = document.getElementById('team-container');
+teamData.forEach(member => {
+    container.innerHTML += `
+        <a href="${member.link}" target="_blank" style="text-decoration:none; color:inherit;">
+            <div class="card">
+                <img class="avatar" src="${member.img}" alt="${member.name}">
+                <p class="username">${member.name}</p>
+            </div>
+        </a>
+    `;
+});
+</script>
+
+</body>
+</html>
