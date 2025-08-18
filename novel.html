@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light Novel Website</title>
+<style>
+    body {
+        font-family: 'Helvetica Neue 5';
+        margin: 0;
+        background-color: #ffffff;
+    }
+
+    /* Navbar */
+    nav {
+        background-color: #4c4f9d;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        border-radius: 0; /* ✅ lurus tanpa lengkungan */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 12px;
+        border: 1px solid white;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+    nav ul li a:hover {
+        background-color: white;
+        color: #4c4f9d;
+    }
+
+    /* Light Novel Section */
+    .light-novel {
+        display: flex;
+        align-items: flex-start;         
+        padding: 20px;
+        background-color: white;
+        color: #333;
+        position: relative;
+        z-index: 2; /* tetap di atas highlight-section */
+        flex-wrap: wrap;
+    }
+    .light-novel img {
+        width: 100%;
+        max-width: 430px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+        position: relative;
+        margin-bottom: -70px; 
+        z-index: 3; 
+        flex-shrink: 0;
+    }
+    .novel-info {
+        flex: 1;
+        min-width: 280px;
+        margin-left: 40px;
+    }
+   .novel-info h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem); /* sebelumnya 1.8rem, 4vw, 3rem */
+    font-weight: bold;
+    color: #4c4f9d;
+    white-space: nowrap;
+    text-shadow: 0px 20px 30px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+.novel-subtitle .title-main {
+    font-size: clamp(1.2rem, 3vw, 1.6rem); /* sebelumnya 1rem, 2.5vw, 1.4rem */
+    font-weight: bold;
+    color: #4c4f9d;
+    text-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+}
+
+.novel-subtitle .title-sub {
+    font-size: clamp(1.1rem, 2.8vw, 1.4rem); /* sebelumnya 0.9rem, 2.3vw, 1.2rem */
+    font-weight: bold;
+    color: #4c4f9d;
+    text-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+}
+
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        border: 2px solid #4c4f9d;
+        border-radius: 10px;
+        color: #4c4f9d;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .btn:hover {
+        background-color: #4c4f9d;
+        color: white;
+    }
+    .progress {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    /* Logo Text */
+    .logo-text {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: bold;
+        font-family: 'helvetica neue 5';
+        background: linear-gradient(270deg, white, rgb(203, 240, 247));
+        background-size: 600% 600%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 3s ease infinite;
+          /* ✅ bayangan hanya di bawah */
+    text-shadow: 0 3px 4px rgba(0,0,0,0.2);
+    }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* highlight-section */
+    .highlight-section {
+        background-color: #4c4f9d;
+        height: 190px;
+        position: relative;
+        margin-top: -100px; /* efek overlap */
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .light-novel {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .novel-info {
+            margin-left: 0;
+        }
+        .novel-subtitle {
+            justify-content: center;
+        }
+          .light-novel img {
+        margin-bottom: 20px; /* ganti -70px jadi jarak normal */
+        position: static;    /* biar nggak saling numpuk */
+    }
+    }
+    @media (max-width: 480px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        nav ul {
+            justify-content: center;
+        }
+        .novel-subtitle {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo-text">Unidentified Witch</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Fanart</a></li>
+        <li><a href="#">Store</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+</nav>
+
+<!-- Light Novel Section -->
+<section class="light-novel">
+    <img src="unidentified_witch.png" alt="Light Novel Cover">
+    <div class="novel-info">
+        <h1>LIGHT NOVEL</h1>
+        <div class="novel-subtitle">
+            <h2 class="title-main">UNIDENTIFIED WITCH:</h2>
+            <h2 class="title-sub">Adopted girl who become archmage</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+           nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+           erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
+           tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+           consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
+        <p>*Disclaimer, bahwa website ini masih tahap pengembangan mungkin suatu saat akan berubah</p>
+        <a href="#" class="btn">Baca Sekarang</a>
+        <p class="progress">Progress Story: Vol 1 chapter 1 (Coming soon)</p>
+    </div>
+</section>
+
+<!-- highlight-section -->
+<section class="highlight-section">
+</section>
+
+</body>
+</html>
